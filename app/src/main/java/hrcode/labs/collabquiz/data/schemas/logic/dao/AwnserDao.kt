@@ -14,7 +14,6 @@ class AwnserDao(private val db: SQLiteDatabase) {
             put(AwnserContract.Columns.QUESTION_ID, awnser.questionId)
             put(AwnserContract.Columns.AWNSER, awnser.awnser)
             put(AwnserContract.Columns.ISTRUE, awnser.isTrue)
-            put(AwnserContract.Columns.LAST_UPDATE, awnser.lastUpdate)
         }
         return db.insert(AwnserContract.TABLE_NAME, null, values)
     }
@@ -34,7 +33,6 @@ class AwnserDao(private val db: SQLiteDatabase) {
                         questionId = it.getInt(it.getColumnIndexOrThrow(AwnserContract.Columns.QUESTION_ID)),
                         awnser = it.getString(it.getColumnIndexOrThrow(AwnserContract.Columns.AWNSER)),
                         isTrue = it.getInt(it.getColumnIndexOrThrow(AwnserContract.Columns.ISTRUE)) == 1,
-                        lastUpdate = it.getString(it.getColumnIndexOrThrow(AwnserContract.Columns.LAST_UPDATE))
                     )
                 )
             }
@@ -47,7 +45,6 @@ class AwnserDao(private val db: SQLiteDatabase) {
             put(AwnserContract.Columns.QUESTION_ID, awnser.questionId)
             put(AwnserContract.Columns.AWNSER, awnser.awnser)
             put(AwnserContract.Columns.ISTRUE, awnser.isTrue)
-            put(AwnserContract.Columns.LAST_UPDATE, awnser.lastUpdate)
         }
         return db.update(
             AwnserContract.TABLE_NAME,

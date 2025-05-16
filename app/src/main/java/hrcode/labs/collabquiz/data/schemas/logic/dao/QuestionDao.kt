@@ -13,8 +13,6 @@ class QuestionDao(private val db: SQLiteDatabase) {
             put(QuestionContract.Columns.QUESTION, question.question)
             put(QuestionContract.Columns.CATEGORY, question.category)
             put(QuestionContract.Columns.ACTIVE, question.active)
-            put(QuestionContract.Columns.LAST_UPDATE, question.lastUpdate)
-            put(QuestionContract.Columns.VERSION, question.version)
         }
         return db.insert(QuestionContract.TABLE_NAME, null, values)
     }
@@ -34,8 +32,6 @@ class QuestionDao(private val db: SQLiteDatabase) {
                         question = it.getString(it.getColumnIndexOrThrow(QuestionContract.Columns.QUESTION)),
                         category = it.getString(it.getColumnIndexOrThrow(QuestionContract.Columns.CATEGORY)),
                         active = it.getInt(it.getColumnIndexOrThrow(QuestionContract.Columns.ACTIVE)) == 1,
-                        lastUpdate = it.getString(it.getColumnIndexOrThrow(QuestionContract.Columns.LAST_UPDATE)),
-                        version = it.getInt(it.getColumnIndexOrThrow(QuestionContract.Columns.VERSION))
                     )
                 )
             }
@@ -48,8 +44,6 @@ class QuestionDao(private val db: SQLiteDatabase) {
             put(QuestionContract.Columns.QUESTION, question.question)
             put(QuestionContract.Columns.CATEGORY, question.category)
             put(QuestionContract.Columns.ACTIVE, question.active)
-            put(QuestionContract.Columns.LAST_UPDATE, question.lastUpdate)
-            put(QuestionContract.Columns.VERSION, question.version)
         }
         return db.update(
             QuestionContract.TABLE_NAME,
