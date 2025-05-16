@@ -9,7 +9,6 @@ object  QuestionContract {
             const val VERSION = "version"
             const val CATEGORY = "category"
             const val QUESTION = "question"
-            const val OPTIONS = "options"
             const val ACTIVE = "active"
 
         }
