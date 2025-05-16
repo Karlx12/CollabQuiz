@@ -1,6 +1,6 @@
 package hrcode.labs.collabquiz.data.schemas.logic.contracts
 
-object  SincroContract {
+object  SyncContract {
 
         const val TABLE_NAME = "sincronizations"
         object Columns {

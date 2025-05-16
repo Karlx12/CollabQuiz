@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import hrcode.labs.collabquiz.data.schemas.logic.contracts.AwnserContract
 import hrcode.labs.collabquiz.data.schemas.logic.contracts.QuestionContract
-import hrcode.labs.collabquiz.data.schemas.logic.contracts.SincroContract
+import hrcode.labs.collabquiz.data.schemas.logic.contracts.SyncContract
 
 
 class DbHelper(context: Context) :
@@ -49,10 +49,10 @@ class DbHelper(context: Context) :
         """
 
         private const val SQL_CREATE_SINCRO_TABLE = """
-            CREATE TABLE ${SincroContract.TABLE_NAME} (
-                ${SincroContract.Columns.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
-                ${SincroContract.Columns.VERSION} INTEGER NOT NULL,
-                ${SincroContract.Columns.LAST_UPDATE} TEXT NOT NULL
+            CREATE TABLE ${SyncContract.TABLE_NAME} (
+                ${SyncContract.Columns.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
+                ${SyncContract.Columns.VERSION} INTEGER NOT NULL,
+                ${SyncContract.Columns.LAST_UPDATE} TEXT NOT NULL
             )
         """
     }
@@ -68,7 +68,7 @@ class DbHelper(context: Context) :
 //        db.execSQL("DROP TABLE IF EXISTS ${StudentContract.TABLE_NAME}")
         db.execSQL("DROP TABLE IF EXISTS ${QuestionContract.TABLE_NAME}")
         db.execSQL("DROP TABLE IF EXISTS ${AwnserContract.TABLE_NAME}")
-        db.execSQL("DROP TABLE IF EXISTS ${SincroContract.TABLE_NAME}")
+        db.execSQL("DROP TABLE IF EXISTS ${SyncContract.TABLE_NAME}")
         onCreate(db)
     }
 }

@@ -2,17 +2,17 @@ package hrcode.labs.collabquiz.data.schemas.logic.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hrcode.labs.collabquiz.data.domain.Sincro
-import hrcode.labs.collabquiz.data.schemas.logic.repositories.SincroRepository
+import hrcode.labs.collabquiz.data.domain.Sync
+import hrcode.labs.collabquiz.data.schemas.logic.repositories.SyncRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class SincroViewModel(
-    private val repository: SincroRepository
+class SyncViewModel(
+    private val repository: SyncRepository
 ) : ViewModel() {
-    private val _sincrons = MutableStateFlow<List<Sincro>>(emptyList())
-    val sincrons: StateFlow<List<Sincro>> = _sincrons
+    private val _sincrons = MutableStateFlow<List<Sync>>(emptyList())
+    val sincrons: StateFlow<List<Sync>> = _sincrons
 
     init {
         loadSincrons()
@@ -24,16 +24,16 @@ class SincroViewModel(
         }
     }
 
-    fun add(sincro: Sincro) {
+    fun add(sync: Sync) {
         viewModelScope.launch {
-            repository.insert(sincro)
+            repository.insert(sync)
             loadSincrons()
         }
     }
 
-    fun update(sincro: Sincro) {
+    fun update(sync: Sync) {
         viewModelScope.launch {
-            repository.update(sincro)
+            repository.update(sync)
             loadSincrons()
         }
     }
