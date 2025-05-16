@@ -3,9 +3,9 @@ package hrcode.labs.collabquiz.data.database
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import hrcode.labs.collabquiz.data.schemas.student.AwnserContract
-import hrcode.labs.collabquiz.data.schemas.student.QuestionContract
-import hrcode.labs.collabquiz.data.schemas.student.SincroContract
+import hrcode.labs.collabquiz.data.schemas.logic.contracts.AwnserContract
+import hrcode.labs.collabquiz.data.schemas.logic.contracts.QuestionContract
+import hrcode.labs.collabquiz.data.schemas.logic.contracts.SincroContract
 
 
 class DbHelper(context: Context) :
