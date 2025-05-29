@@ -5,5 +5,4 @@ data class Awnser(
     val questionId: Int,
     val awnser: String,
     val isTrue: Boolean,
-    val lastUpdate: String
 )

@@ -5,6 +5,4 @@ data class Question(
     val question: String,
     val category: String,
     val active: Boolean,
-    val lastUpdate: String,
-    val version: Int
 )

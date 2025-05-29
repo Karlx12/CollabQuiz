@@ -30,10 +30,7 @@ class DbHelper(context: Context) :
                 ${QuestionContract.Columns.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
                 ${QuestionContract.Columns.QUESTION} TEXT NOT NULL,
                 ${QuestionContract.Columns.CATEGORY} TEXT NOT NULL,
-                ${QuestionContract.Columns.OPTIONS} TEXT NOT NULL,
-                ${QuestionContract.Columns.ACTIVE} INTEGER NOT NULL,
-                ${QuestionContract.Columns.LAST_UPDATE} TEXT NOT NULL,
-                ${QuestionContract.Columns.VERSION} INTEGER NOT NULL
+                ${QuestionContract.Columns.ACTIVE} INTEGER NOT NULL
             )
         """
 
@@ -43,12 +40,11 @@ class DbHelper(context: Context) :
                 ${AwnserContract.Columns.QUESTION_ID} INTEGER NOT NULL,
                 ${AwnserContract.Columns.AWNSER} TEXT NOT NULL,
                 ${AwnserContract.Columns.ISTRUE} INTEGER NOT NULL,
-                ${AwnserContract.Columns.LAST_UPDATE} TEXT NOT NULL,
                 FOREIGN KEY(${AwnserContract.Columns.QUESTION_ID}) REFERENCES ${QuestionContract.TABLE_NAME}(${QuestionContract.Columns.ID})
             )
         """
 
-        private const val SQL_CREATE_SINCRO_TABLE = """
+        private const val SQL_CREATE_SYNC_TABLE = """
             CREATE TABLE ${SyncContract.TABLE_NAME} (
                 ${SyncContract.Columns.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
                 ${SyncContract.Columns.VERSION} INTEGER NOT NULL,
@@ -61,7 +57,7 @@ class DbHelper(context: Context) :
 //        db.execSQL(SQL_CREATE_STUDENT_TABLE)
         db.execSQL(SQL_CREATE_QUESTION_TABLE)
         db.execSQL(SQL_CREATE_AWNSER_TABLE)
-        db.execSQL(SQL_CREATE_SINCRO_TABLE)
+        db.execSQL(SQL_CREATE_SYNC_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
