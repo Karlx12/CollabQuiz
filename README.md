@@ -26,7 +26,7 @@ git clone https://github.com/tu-usuario/CollabQuiz.git
 Abre el proyecto en Android Studio (versión compatible).
 ```
 
-## Ejecuta la app en un emulador o dispositivo físico.
+Ejecuta la app en un emulador o dispositivo físico.
 
 ## Cómo Contribuir 🤝
 ¡Las contribuciones son bienvenidas! Si deseas mejorar la app:
