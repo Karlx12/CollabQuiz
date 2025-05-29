@@ -1,24 +1,29 @@
 package hrcode.labs.collabquiz.data.schemas.logic.repositories
 
+import android.content.Context
+import hrcode.labs.collabquiz.data.database.DbHelper
 import hrcode.labs.collabquiz.data.domain.Sync
 import hrcode.labs.collabquiz.data.schemas.logic.dao.SyncDao
 
 
-class SyncRepository(private val syncDao: SyncDao) {
+class SyncRepository(context: Context) {
+    private val dbHelper = DbHelper(context)
+    private val dao by lazy { SyncDao(dbHelper.writableDatabase) }
+
 
     fun insert(sync: Sync): Long {
-        return syncDao.insert(sync)
+        return dao.insert(sync)
     }
 
     fun getAll(): List<Sync> {
-        return syncDao.getAll()
+        return dao.getAll()
     }
 
     fun update(sync: Sync): Int {
-        return syncDao.update(sync)
+        return dao.update(sync)
     }
 
     fun delete(id: Int): Int {
-        return syncDao.delete(id)
+        return dao.delete(id)
     }
 }

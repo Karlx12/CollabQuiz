@@ -5,6 +5,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import hrcode.labs.collabquiz.data.domain.Question
 import hrcode.labs.collabquiz.data.schemas.logic.contracts.QuestionContract
+import kotlin.compareTo
 
 class QuestionDao(private val db: SQLiteDatabase) {
 
@@ -59,5 +60,17 @@ class QuestionDao(private val db: SQLiteDatabase) {
             "${QuestionContract.Columns.ID} = ?",
             arrayOf(id.toString())
         )
+    }
+    fun questionExists(questionText: String): Boolean {
+        val cursor = db.query(
+            QuestionContract.TABLE_NAME,
+            arrayOf(QuestionContract.Columns.ID),
+            "${QuestionContract.Columns.QUESTION} = ?",
+            arrayOf(questionText),
+            null, null, null
+        )
+
+        val exists = cursor.use { it.count > 0 }
+        return exists
     }
 }

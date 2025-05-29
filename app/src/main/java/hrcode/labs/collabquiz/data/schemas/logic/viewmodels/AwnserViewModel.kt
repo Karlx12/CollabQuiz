@@ -7,6 +7,7 @@ import hrcode.labs.collabquiz.data.schemas.logic.repositories.AwnserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlin.text.insert
 
 class AwnserViewModel(
     private val repository: AwnserRepository
@@ -29,6 +30,9 @@ class AwnserViewModel(
             repository.insert(awnser)
             loadAwnsers()
         }
+    }
+    fun insert(awnser: Awnser): Long {
+        return repository.insert(awnser)
     }
 
     fun update(awnser: Awnser) {

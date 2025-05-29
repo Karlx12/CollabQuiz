@@ -7,6 +7,7 @@ import hrcode.labs.collabquiz.data.schemas.logic.repositories.QuestionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlin.text.insert
 
 class QuestionViewModel(
     private val repository: QuestionRepository
@@ -26,9 +27,12 @@ class QuestionViewModel(
 
     fun add(question: Question) {
         viewModelScope.launch {
-            repository.insert(question)
+            val result = repository.insert(question)
             loadQuestions()
         }
+    }
+    fun insert(question: Question): Long {
+        return repository.insert(question)
     }
 
     fun update(question: Question) {
